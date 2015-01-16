@@ -1,9 +1,7 @@
 # VR Vs. the World
-
 > A guy with a vr headset fights for survival, pitted against his audience, using commands to make everything as horrifying and deadly as possible.
 
 # This is our design studio project.
-
 ## We're looking to create social interactive media.
 
 We want to create a social experience that puts a group of people together to have fun teaming up on a helpless guy plugged into a virtual reality headset.
@@ -15,7 +13,6 @@ We want to create an environment that the virtual reality guy will feel immersed
 We want people to work together to change how the situation develops, and have their plans manifest into hilarious interactions with the VR user.
 
 ## We have no idea how to get this done
-
 ### Tech
 - Twitch Chat
 - Oculus Rift
@@ -23,3 +20,13 @@ We want people to work together to change how the situation develops, and have t
 
 ### Process
 ...?
+
+## We have a plan
+> What was that again?
+
+### Start with concept art
+### Make some designs
+### Make a prototype
+### Figure out what's the funnest
+### Adjust plan for fun times
+### Get 'er done!
