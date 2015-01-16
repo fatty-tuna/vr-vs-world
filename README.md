@@ -19,7 +19,26 @@ We want people to work together to change how the situation develops, and have t
 - Unity
 
 ### Process
-...?
+> ...?
+
+#### Management
+We have team roles (Primary)[Secondary]
+- art (Jessica) [Aaron, Taylor]
+- programming (Aaron) [Jeffery]
+- sound (Kio) [Jessica]
+- management (Jeffrey) [Kio]
+- interface (Taylor) [Jeffrey]
+
+Management will direct the overall process, and each role leader will manage the progress in their section.
+
+Each section's management process should be able to communicate:
+- what has been done
+- what is currently being worked on
+- what is planned to be done soon
+
+> How will we do this?
+
+It would also be great to show off what the critical path is for each section, and for the project as a whole, so that everyone can work as efficiently as possible.
 
 ## We have a plan
 > What was that again?
