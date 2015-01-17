@@ -1,5 +1,5 @@
 # VR Vs. the World
-> A guy with a vr headset fights for survival, pitted against his audience, using commands to make everything as horrifying and deadly as possible.
+> A guy with a vr headset fights for survival, pitted against his audience, who work together to make everything as horrifying and deadly as possible.
 
 # This is our design studio project.
 ## We're looking to create social interactive media.
