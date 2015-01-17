@@ -43,9 +43,18 @@ It would also be great to show off what the critical path is for each section, a
 ## We have a plan
 > What was that again?
 
-### Start with concept art
-### Make some designs
-### Make a prototype
-### Figure out what's the funnest
-### Adjust plan for fun times
-### Get 'er done!
+- Start with concept art
+- Make some designs
+- Make a prototype
+- Figure out what's the funnest
+- Adjust plan for fun times
+- Get 'er done!
+
+## What is the core process of the experience?
+
+A player hooked up to VR and a video stream gets thrown into a world.
+...
+
+A group of people who are able to see the VR user live, and also some [...] view of the world, participate by somehow [...] having an impact on the environment.
+
+The public users should interact with the simulation, with each other, and the VR user through extension for a social balance. By working together, social scalability.
