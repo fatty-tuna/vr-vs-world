@@ -1,9 +1,12 @@
 ##
 # Unity
 ##
-unity-project/Library/
-unity-project/Assets/
-unity-project/Temp/
+unity-project/Assets/OVR
+unity-project/Assets/Plugins
+unity-project/Library
+unity-project/Assets/Standard Assets
+unity-project/Temp
+!vrVsWorld.unity
 
 #################
 ## Eclipse
