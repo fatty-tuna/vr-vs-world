@@ -1,1 +1,2 @@
 - Created Log
+- Aaron showed Jess that the log is here
