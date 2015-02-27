@@ -7,3 +7,9 @@
  - I will create 3D models
  - Jeffrey will look at connecting them programatically.
 - JN - Contributions have been reorganized and will not delete itself
+
+
+| Name | Description |
+| ---- | ----------- |
+| Aaron | Tested tables | 
+| Jeffrey | Thinks we need more slashes |
