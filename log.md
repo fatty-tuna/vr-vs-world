@@ -2,3 +2,7 @@
 - I edit the log
 - Me too
 - Jess and I are going to look at room generation
+ - We're going to make three pieces: Dead end, tunnel, and four way pieces.
+ - Jess will make sketches for each
+ - I will create 3D models
+ - Jeffrey will look at connecting them programatically.
