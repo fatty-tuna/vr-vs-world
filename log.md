@@ -2,7 +2,7 @@
 | ---- | ----------- |
 | Aaron | Created Log |
 | Aaron | Tested tables | 
-| Aaron, Jess, Jeffrey | We're going to jam together on maze generation |
+| AA,JB,JN | We're going to jam together on maze generation |
 | Jessica | Made sketches for rooms |
 | Jeffrey | Thinks we need more slashes |
 | Jeffrey | Reorganized our contributions and made snapshots less dangerous |
