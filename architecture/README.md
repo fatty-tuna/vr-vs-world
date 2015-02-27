@@ -1,3 +1,3 @@
-This is where you go to learn about stuff.
-
-If you want to know about something, just come here and investigate it.
+# Architecture
+## Come here to learn how each section works and how to use it
+## Make sure others know what your stuff does!
