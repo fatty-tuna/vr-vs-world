@@ -20,4 +20,4 @@
 | | - The script should make it easy to programmatically get the position and orientation of openings|
 | | - It should be possible to start with a prefab, and iteratively add points to it.|
 | | - The script would ideally contain a function that checks if a certain piece will fit. |
-| Jeffrey | Added maze generator, it only like the top left |
+| Jeffrey | Added maze generator, it only likes the top left |
