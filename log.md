@@ -13,3 +13,4 @@
 | Aaron | Tested .ma files in unity (works) |
 | Aaron | Plan to create a utility function for placing objects on a grid. |
 | Aaron | Is going to do look at dirty asset drops in unity scenes |
+| Aaron | Created unity code that creates random instances of prefabs in a scene |
