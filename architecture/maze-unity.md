@@ -4,13 +4,14 @@ Creating mazes in unity is very interactive and a lot of fun.
 
 #Table of Contents
 
-- `0.0` Learning to use the inspector
-- `1` Making the initial room prefabs
- - `1.1` Adding lights
- - `1.2` Adding a root
- - `1.3` Adding openings
- - `1.4` Adding the magic script that makes everything work
-- `2` Adding the rooms to the generator
+- `0.0` [Learning to use the inspector](#00-learning-to-use-the-inspector)
+- `1` [Making the initial room prefabs](#1-making-initial-room-prefabs)
+ - `1.1` [Adding lights](#11-adding-lights-and-modifying-the-prefab)
+ - `1.2` [Adding a root](#12-adding-a-root)
+ - `1.3` [Adding openings](#13-adding-openings)
+ - `1.4` [Adding the magic script that makes everything work](#14-the-magic-script)
+- `2` [Adding the rooms to the generator](#2-adding-your-room-to-the-game)
+- [Roadmap](#roadmap)
 
 
 # 0.0 Learning to use the inspector
