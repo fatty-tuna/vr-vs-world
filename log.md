@@ -6,3 +6,4 @@
  - Jess will make sketches for each
  - I will create 3D models
  - Jeffrey will look at connecting them programatically.
+ - -Contributions have been reorganized and will not delete itself
