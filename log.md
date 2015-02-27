@@ -1,15 +1,13 @@
-- Created Log
-- I edit the log
-- Me too
-- Jess and I are going to look at room generation
- - We're going to make three pieces: Dead end, tunnel, and four way pieces.
- - Jess will make sketches for each
- - I will create 3D models
- - Jeffrey will look at connecting them programatically.
-- JN - Contributions have been reorganized and will not delete itself
-
-
 | Name | Description |
 | ---- | ----------- |
+| Aaron | Created Log |
 | Aaron | Tested tables | 
+| Aaron, Jess, Jeffrey | We're going to jam together on maze generation |
+| Jessica | Made sketches for rooms |
 | Jeffrey | Thinks we need more slashes |
+| Jeffrey | Reorganized our contributions and made snapshots less dangerous |
+| Jeffrey | Is looking at the long term architecture classes for map generation |
+| Aaron | Created models for three room shapes ( no details yet )
+| Aaron | Tested .ma files in unity (works) |
+| Aaron | Plan to create a utility function for placing objects on a grid. |
+| Aaron | Is going to do look at dirty asset drops in unity scenes |
