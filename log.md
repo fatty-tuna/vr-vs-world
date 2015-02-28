@@ -26,3 +26,4 @@
 | | - Things weren't working before : a room would fill out its openings, but also its entrance (infinite)
 | | Now the root nodes have trouble generating properly. Need to know whether the entrance is open or not.
 | | Correctly manipulating the root node, but maybe letting it run wild with the four way piece was a statistically bad move. Stay tuned...
+| | After lots of crashing and rebuilding, I think I finally created a version that will work nicely and put it in my contributions folder. |

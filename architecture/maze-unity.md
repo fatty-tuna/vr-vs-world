@@ -51,6 +51,6 @@ To add rooms to the game, you will find the Game object in the hierarchy, and in
 With that, you're good to go! For now.
 
 #Roadmap
-- Some rooms should have weights for how often they appear.
+- ~~Some rooms should have weights for how often they appear.~~
 - Rooms might define what child rooms they would prefer. This could allow for each path to have its own personality.
 - Any questions?
