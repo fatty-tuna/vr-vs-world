@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="Maze_Block.js"></script>
+	<script type="text/javascript" src="Maze_Generator.js"></script>
+</head>
+<body>
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid #000000;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+	<script>
+
+	var c = document.getElementById("myCanvas");
+	var context = c.getContext("2d");
+	
+	var maze = new MazeGenerator(60);
+
+	context.drawImage(maze.getHumanImage(5), 0, 0);
+	</script>
+
+</body>
+</html>
