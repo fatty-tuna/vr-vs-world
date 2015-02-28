@@ -1,27 +1,20 @@
 # VR Vs. the World
 > A guy with a vr headset fights for survival, pitted against his audience, who work together to make everything as horrifying and deadly as possible.
 
-# This is our design studio project.
-## We're looking to create social interactive media.
-
-We want to create a social experience that puts a group of people together to have fun teaming up on a helpless guy plugged into a virtual reality headset.
-
-We want to design an interface that allows viewers of a video stream to affect the world that the virtual reality guy tries to survive in.
-
-We want to create an environment that the virtual reality guy will feel immersed in. We want their interactions with the environment to evoke emotion. And challenges, deaths, sounds, and the overall atmosphere should do the same.
-
-We want people to work together to change how the situation develops, and have their plans manifest into hilarious interactions with the VR user.
-
-## We have no idea how to get this done
-### Tech
-- Twitch Chat
+## Our Tech
+- Twitch Chat (?)
 - Oculus Rift
 - Unity
 
-### Process
-> ...?
+## Our Process
+- GitHub:
+  - [System Architecture Docs](https://github.com/fatty-tuna/vr-vs-world/tree/master/architecture)
+    - We use this to understand the way each part of the system works
+  - [Update Journal Logs](https://github.com/fatty-tuna/vr-vs-world/tree/master/log.md)
+    - We use this to follow each other's progress at a glance
+    - We can work closely together and stay motivated
 
-#### Management
+## Team Management
 We have team roles (Primary)[Secondary]
 - art (Jessica) [Aaron, Taylor]
 - programming (Aaron) [Jeffery]
@@ -29,32 +22,20 @@ We have team roles (Primary)[Secondary]
 - management (Jeffrey) [Kio]
 - interface (Taylor) [Jeffrey]
 
-Management will direct the overall process, and each role leader will manage the progress in their section.
+We want an agile team, so we have primary and secondary roles where we want to help out, but we should be ready to do anything using the help of our docs, logs, and comments!
 
-Each section's management process should be able to communicate:
-- what has been done
-- what is currently being worked on
-- what is planned to be done soon
+We use a scrum board with a product backlog. We've been having trouble getting it integrated into our workflow, but we're doing our best
 
-> How will we do this?
-
-It would also be great to show off what the critical path is for each section, and for the project as a whole, so that everyone can work as efficiently as possible.
-
-## We have a plan
+## The Plan
+### We have a plan
 > What was that again?
 
-- Start with concept art
-- Make some designs
-- Make a prototype
-- Figure out what's the funnest
-- Adjust plan for fun times
-- Get 'er done!
+- Work in parallel
+- Get stuff done in a way where you can show off your concept and have others play with it as quickly as possible
+- Manage your docs and logs
+  - Unit tests would be sweet
+  - Working on a dev branch and committing working modules would be nice
+- Work together to build up the modules, and then bring them together
+  - Could we use submodules in fatty-tuna?
 
-## What is the core process of the experience?
-
-A player hooked up to VR and a video stream gets thrown into a world.
-...
-
-A group of people who are able to see the VR user live, and also some [...] view of the world, participate by somehow [...] having an impact on the environment.
-
-The public users should interact with the simulation, with each other, and the VR user through extension for a social balance. By working together, social scalability.
+## The Experience
