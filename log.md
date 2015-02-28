@@ -21,3 +21,6 @@
 | | - It should be possible to start with a prefab, and iteratively add points to it.|
 | | - The script would ideally contain a function that checks if a certain piece will fit. |
 | Jeffrey | Added maze generator, it only likes the top left |
+| Aaron | Updated unity architecture document, it's awesome. |
+| | Modified the room layouts to maintain openings, but define an entrance |
+| | - Things weren't working before : a room would fill out its openings, but also its entrance (infinite)
