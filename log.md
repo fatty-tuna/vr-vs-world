@@ -24,3 +24,4 @@
 | Aaron | Updated unity architecture document, it's awesome. |
 | | Modified the room layouts to maintain openings, but define an entrance |
 | | - Things weren't working before : a room would fill out its openings, but also its entrance (infinite)
+| | Now the root nodes have trouble generating properly. Need to know whether the entrance is open or not.
