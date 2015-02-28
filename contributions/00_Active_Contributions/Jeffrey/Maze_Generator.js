@@ -2,12 +2,14 @@ function MazeGenerator(size){
 
 	//Ensures size is odd
 	this.MazeSize = size % 2 ? size : size + 1;
+	console.log("Maze Size: " + this.MazeSize);
 	
 	//Prepares the maze storage
 	this.MazeBlocks = new Array();
-	for(i = 0; i < size * size; i++){
+	for(i = 0; i < (this.MazeSize * this.MazeSize); i++){
 		this.MazeBlocks.push(new MazeBlock());
 	}
+	console.log("Block Count: " + this.MazeBlocks.length);
 	
 	this.generateMaze();
 	this.finalize();
@@ -18,9 +20,10 @@ MazeGenerator.prototype.generateMaze = function(){
 
 	//Center of the maze
 	var center = Math.floor((this.MazeSize / 2));
+	console.log("Center: " + center);
 	
 	//How many blocks are in the current edge
-	var rotAdd = 1;
+	var rotAdd = 0.5;
 	
 	//Direction of current edge
 	//0 - up
@@ -34,9 +37,11 @@ MazeGenerator.prototype.generateMaze = function(){
 	
 	//Total number of edges in the spiral
 	var edgeTotal = this.MazeSize + (this.MazeSize - 1);
+	console.log("Edge Total: " + edgeTotal);
 	
 	//Current maze block
 	var curBlock = center * this.MazeSize + center;
+	console.log("Starting Block: " + curBlock);
 	
 	//Sets a maze block of all walls (for maze edges)
 	var emptyBlock = new MazeBlock();
@@ -44,7 +49,7 @@ MazeGenerator.prototype.generateMaze = function(){
 	
 	//Loops through spiral until all blocks have been calculated
 	while(edgeCount < edgeTotal){
-		
+
 		//To avoid going off the maze map on the last edge
 		if(edgeCount == edgeTotal - 1){
 			rotAdd-=1;
@@ -52,7 +57,6 @@ MazeGenerator.prototype.generateMaze = function(){
 		
 		//Counts though number of block needed for current edges
 		for(i = 0; i < rotAdd; i++){
-			
 			//Switches the current block in the correct direction and gets surrounding blocks
 			switch(dir){
 				case 0:	//Up
@@ -80,21 +84,41 @@ MazeGenerator.prototype.generateMaze = function(){
 				
 					break;
 			}
+			//console.log("Current Block: " + curBlock);
+			
+			var up, right, down, left;
 			
 			//Gets the block above the current block
-			var up = curBlock < this.MazeSize ? emptyBlock : this.MazeBlocks[curBlock - this.MazeSize];
+			if(i < this.MazeSize){
+				up = emptyBlock;
+			}else{
+				up = this.MazeBlocks[i - this.MazeSize];
+			}
 			
 			//Gets the block to the right of the current block
-			var right = (curBlock + 1) % this.MazeSize == 0 ? emptyBlock : (curBlock + 1 >= this.MazeBlocks.length ? emptyBlock : this.MazeBlocks[curBlock + 1]);
-			console.log(curBlock);
+			if((i + 1) % this.MazeSize == 0){
+				right = emptyBlock;
+			}else{
+				right = this.MazeBlocks[i + 1];
+			}
+
 			//Gets the block below the current block
-			var down = curBlock / this.MazeSize <= (this.MazeSize - 1)? emptyBlock : this.MazeBlocks[curBlock + this.MazeSize];
+			if(i / this.MazeSize <= (this.MazeSize - 1)){
+				down = emptyBlock;
+			}else{
+				down = this.MazeBlocks[i + this.MazeSize];
+			}
 			
 			//Gets the block to the left of the current block
-			var left = curBlock % this.MazeSize == 0 ? emptyBlock : this.MazeBlocks[curBlock - 1];
+			
+			if(i % this.MazeSize == 0){
+				left = emptyBlock;
+			}else{
+				left = this.MazeBlocks[i - 1];
+			}
 			
 			//Generate the current block
-			if(curBlock < this.MazeBlocks.length){
+			if(curBlock <= this.MazeBlocks.length){
 				this.MazeBlocks[curBlock].createBlock(up,right,down,left);
 			}
 		}
@@ -114,27 +138,45 @@ MazeGenerator.prototype.generateMaze = function(){
 
 MazeGenerator.prototype.finalize = function(){
 	//Sets a maze block of all walls (for maze edges)
+	var up, right, down, left;
 	var emptyBlock = new MazeBlock();
 	emptyBlock.setSides(1,1,1,1);
-	
-	for(i = 0; i < this.MazeSize.length; i++){
+
+	for(i = 0; i < this.MazeBlocks.length; i++){
 	
 		//Gets the block above the current block
-		var up = curBlock < this.MazeSize ? emptyBlock : this.MazeBlocks[curBlock - this.MazeSize];
+		if(i < this.MazeSize){
+			up = emptyBlock;
+		}else{
+			up = this.MazeBlocks[i - this.MazeSize];
+		}
 		
 		//Gets the block to the right of the current block
-		var right = (curBlock + 1) % this.MazeSize == 0 ? emptyBlock : (curBlock + 1 >= this.MazeBlocks.length ? emptyBlock : this.MazeBlocks[curBlock + 1]);
-		console.log(curBlock);
+		if((i + 1) % this.MazeSize == 0){
+			right = emptyBlock;
+		}else{
+			right = this.MazeBlocks[i + 1];
+		}
+
 		//Gets the block below the current block
-		var down = curBlock / this.MazeSize <= (this.MazeSize - 1)? emptyBlock : this.MazeBlocks[curBlock + this.MazeSize];
+		if(i / this.MazeSize >= (this.MazeSize - 1)){
+			down = emptyBlock;
+		}else{
+			down = this.MazeBlocks[i + this.MazeSize];
+		}
 		
 		//Gets the block to the left of the current block
-		var left = curBlock % this.MazeSize == 0 ? emptyBlock : this.MazeBlocks[curBlock - 1];
+		if(i % this.MazeSize == 0){
+			left = emptyBlock;
+		}else{
+			left = this.MazeBlocks[i - 1];
+		}
 		
 		//Finalize the current block
-		if(curBlock < this.MazeBlocks.length){
-			//this.MazeBlocks[curBlock].finalize(up,right,down,left);
+		if(i < this.MazeBlocks.length){
+			this.MazeBlocks[i].finalize(up,right,down,left);
 		}
+		
 	}
 }
 MazeGenerator.prototype.getImage = function(){

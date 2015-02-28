@@ -48,10 +48,18 @@ MazeBlock.prototype.createBlock = function(up,right,down,left){
 };
 
 MazeBlock.prototype.finalize = function(up,right,down,left){
-	this.sides["UP"] = up.sides["DOWN"] != 0 ? 1 : this.sides["UP"];
-	this.sides["RIGHT"] = right.sides["LEFT"] != 0 ? 1 : this.sides["RIGHT"];
-	this.sides["DOWN"] = down.sides["UP"] != 0 ? 1 : this.sides["DOWN"];
-	this.sides["LEFT"] = left.sides["RIGHT"] != 0 ? 1 : this.sides["LEFT"];
+	if(up.sides["DOWN"] != 0){
+		this.sides["UP"] = 1;
+	}
+	if(right.sides["LEFT"] != 0){
+		this.sides["RIGHT"] = 1;
+	}
+	if(down.sides["UP"] != 0){
+		this.sides["DOWN"] = 1;
+	}
+	if(left.sides["RIGHT"] != 0){
+		this.sides["LEFT"] = 1;
+	}
 };
 
 MazeBlock.prototype.setSides = function(up,right,down,left){
@@ -86,19 +94,19 @@ MazeBlock.prototype.getImage = function(size){
 	}else{
 		
 		if(this.sides["UP"] == 1){
-			bufferContext.fillRect(0,0,size - 1,0); 
+			bufferContext.fillRect(0,0,size,2); 
 		}
 		
 		if(this.sides["RIGHT"] == 1){
-			bufferContext.fillRect(size - 1,0,size - 1,size - 1); 
+			bufferContext.fillRect(size - 2,0,size,size); 
 		}
 		
 		if(this.sides["DOWN"] == 1){
-			bufferContext.fillRect(0,size - 1,size - 1,size - 1); 
+			bufferContext.fillRect(0,size - 2,size,size); 
 		}
 		
 		if(this.sides["LEFT"] == 1){
-			bufferContext.fillRect(0,0,0,size - 1); 
+			bufferContext.fillRect(0,0,2,size); 
 		}
 	}
 	
