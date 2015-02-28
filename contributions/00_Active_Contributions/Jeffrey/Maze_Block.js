@@ -1,50 +1,33 @@
 function MazeBlock(){
-	this.sides = {"UP":-1,"RIGHT":-1,"DOWN":-1,"LEFT":-1};
+	this.sides = {"UP":0,"RIGHT":0,"DOWN":0,"LEFT":0};
 }
 
 MazeBlock.prototype.createBlock = function(up,right,down,left){
-	
-	switch(up.sides["DOWN"] == 1){
-		case 1:
-			this.sides["UP"] = 1;
-			break;
-		default:
-			this.sides["UP"] = Math.floor((Math.random() * 2));
-			break;
+
+	if(up.sides["DOWN"] == 1){
+		this.sides["UP"] = 1;
+	}else{
+		this.sides["UP"] = Math.floor((Math.random() * 2));
 	}
 	
-	switch(right.sides["LEFT"] == 1){
-		case 1:
-			this.sides["RIGHT"] = 1;
-			break;
-		default:
-			this.sides["RIGHT"] = Math.floor((Math.random() * 2));
-			break;
+	if(right.sides["LEFT"] == 1){
+		this.sides["RIGHT"] = 1;
+	}else{
+		this.sides["RIGHT"] = Math.floor((Math.random() * 2));
 	}
 	
-	switch(down.sides["UP"] == 1){
-		case 1:
-			this.sides["DOWN"] = 1;
-			break;
-		default:
-			this.sides["DOWN"] = Math.floor((Math.random() * 2));
-			break;
+	if(down.sides["UP"] == 1){
+		this.sides["DOWN"] = 1;
+	}else{
+		this.sides["DOWN"] = Math.floor((Math.random() * 2));
 	}
 	
-	switch(left.sides["RIGHT"] == 1){
-		case 1:
-			this.sides["LEFT"] = 1;
-			break;
-		default:
-			this.sides["LEFT"] = Math.floor((Math.random() * 2));
-			break;
+	if(left.sides["RIGHT"] == 1){
+		this.sides["LEFT"] = 1;
+	}else{
+		this.sides["LEFT"] = Math.floor((Math.random() * 2));
 	}
-	
-	
-	/*this.sides["UP"] = up.sides["DOWN"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
-	this.sides["RIGHT"] = right.sides["LEFT"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
-	this.sides["DOWN"] = down.sides["UP"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
-	this.sides["LEFT"] = left.sides["RIGHT"] == 1 ? 1 : (Math.floor((Math.random() * 2)));*/
+
 };
 
 MazeBlock.prototype.finalize = function(up,right,down,left){

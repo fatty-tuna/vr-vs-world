@@ -89,32 +89,31 @@ MazeGenerator.prototype.generateMaze = function(){
 			var up, right, down, left;
 			
 			//Gets the block above the current block
-			if(i < this.MazeSize){
+			if(curBlock < this.MazeSize){
 				up = emptyBlock;
 			}else{
-				up = this.MazeBlocks[i - this.MazeSize];
+				up = this.MazeBlocks[curBlock - this.MazeSize];
 			}
 			
 			//Gets the block to the right of the current block
-			if((i + 1) % this.MazeSize == 0){
+			if((curBlock + 1) % this.MazeSize == 0){
 				right = emptyBlock;
 			}else{
-				right = this.MazeBlocks[i + 1];
+				right = this.MazeBlocks[curBlock + 1];
 			}
 
 			//Gets the block below the current block
-			if(i / this.MazeSize <= (this.MazeSize - 1)){
+			if(curBlock / this.MazeSize >= (this.MazeSize - 1)){
 				down = emptyBlock;
 			}else{
-				down = this.MazeBlocks[i + this.MazeSize];
+				down = this.MazeBlocks[curBlock + this.MazeSize];
 			}
 			
 			//Gets the block to the left of the current block
-			
-			if(i % this.MazeSize == 0){
+			if(curBlock % this.MazeSize == 0){
 				left = emptyBlock;
 			}else{
-				left = this.MazeBlocks[i - 1];
+				left = this.MazeBlocks[curBlock - 1];
 			}
 			
 			//Generate the current block
