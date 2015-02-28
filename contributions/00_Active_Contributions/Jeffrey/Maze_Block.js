@@ -1,26 +1,34 @@
 function MazeBlock(){
 	this.sides = {"UP":0,"RIGHT":0,"DOWN":0,"LEFT":0};
+	this.endPoint = false;
+	this.intersection = false;
+	this.marked = false;
+	this.full = false;
 }
 
-MazeBlock.prototype.createBlock = function(up,right,down,left){
+MazeBlock.prototype.createBlock = function(){
 	this.sides["UP"] = Math.floor((Math.random() * 2));
 	this.sides["RIGHT"] = Math.floor((Math.random() * 2));
 	this.sides["DOWN"] = Math.floor((Math.random() * 2));
 	this.sides["LEFT"] = Math.floor((Math.random() * 2));
 };
 
-MazeBlock.prototype.finalize = function(up,right,down,left){
-	if(up.sides["DOWN"] != 0){
+MazeBlock.prototype.finalize = function(sur){
+	if(sur["UP"].sides["DOWN"] != 0){
 		this.sides["UP"] = 1;
 	}
-	if(right.sides["LEFT"] != 0){
+	if(sur["RIGHT"].sides["LEFT"] != 0){
 		this.sides["RIGHT"] = 1;
 	}
-	if(down.sides["UP"] != 0){
+	if(sur["DOWN"].sides["UP"] != 0){
 		this.sides["DOWN"] = 1;
 	}
-	if(left.sides["RIGHT"] != 0){
+	if(sur["LEFT"].sides["RIGHT"] != 0){
 		this.sides["LEFT"] = 1;
+	}
+	
+	if(this.sides["UP"] != 0 && this.sides["RIGHT"] != 0 && this.sides["DOWN"] != 0 && this.sides["LEFT"] != 0){
+		this.full = true;
 	}
 };
 
@@ -46,12 +54,23 @@ MazeBlock.prototype.getImage = function(size){
 	buffer.width = size;
 	buffer.height = size;
 	var bufferContext = buffer.getContext("2d");
+	
 	bufferContext.fillStyle="#ffffff";
+	if(this.marked == true){
+		bufferContext.fillStyle="#aaffaa";
+	}
+	if(this.intersection == true){
+		bufferContext.fillStyle="#aaaaff";
+	}
+	if(this.endPoint == true){
+		bufferContext.fillStyle="#ffaaaa";
+	}
+	
 	bufferContext.fillRect(0,0,buffer.width,buffer.height); 
 	
 	bufferContext.fillStyle="#000000";
 	
-	if(this.sides["UP"] != 0 && this.sides["RIGHT"] != 0 && this.sides["DOWN"] != 0 && this.sides["LEFT"] != 0){
+	if(this.full == true){
 		bufferContext.fillRect(0,0,buffer.width,buffer.height); 
 	}else{
 		
