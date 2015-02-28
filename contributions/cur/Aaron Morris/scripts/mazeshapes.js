@@ -7,7 +7,7 @@ var cells_rz : int;
 var distance : int;
 
 function Start () {
-	distance = 70;
+	distance = 70; 
 	cells_rx = cells_rx || 10;
 	cells_rz = cells_rz || 10;
 	for(var y = -cells_rz; y < cells_rz; y++) {
