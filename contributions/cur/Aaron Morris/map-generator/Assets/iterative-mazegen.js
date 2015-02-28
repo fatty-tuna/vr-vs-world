@@ -10,25 +10,20 @@ var debug : int = 1;
 
 function Start () {
 	Fill(seed);
-	
-	//fill the root (TODO: MAKE THIS A SUB FUNCTION)
-	var entrance = seed.GetComponent(RoomOpenings).entrance;
-	var type = children[ChooseRoom()];
-	var newRoom = Instantiate(type, entrance.transform.position, entrance.transform.rotation);
-	Fill(newRoom);
+	Fill(PutRoom(seed.GetComponent(RoomOpenings).entrance));
 }
 
 function Fill(room:GameObject) {
 	var view : RoomOpenings = room.GetComponent(RoomOpenings);
-	if(debug && view.openings.Length > 0)
-		Debug.Log(view.openings[0].transform.position);
-		
 	for(var i=0; i<view.openings.Length; i++) {
-		var opening = view.openings[i];
-		var type = children[ChooseRoom()];
-		var newRoom = Instantiate(type, opening.transform.position, opening.transform.rotation);
-		Fill(newRoom);
+		Fill(PutRoom(view.openings[i]));
 	}
+}
+
+function PutRoom(locator:GameObject) {
+	var type = children[ChooseRoom()];
+	var newRoom = Instantiate(type, locator.transform.position, locator.transform.rotation);
+	return newRoom;
 }
 
 function ChooseRoom() {
@@ -41,36 +36,26 @@ function ChooseRoom() {
 	//imagine pointing your finger randomly from start to end
 	//and then figuring out what range your finger was on.
 	var pointer = Random.Range(0,total);
+	
 	if(debug) Debug.Log(pointer+" / "+total);
+	
+	//We're going to slowly add until we get to the total.
+	//Each time, we'll check if we're in between the start and end.
 	var subtotal:float = 0.0;
 	for(var j:int=0; j<children.Length; j++) {
 		var next = subtotal + probabilities[j];
+		
 		if(pointer > subtotal && pointer < next) {
 			if(debug) Debug.Log(j);
 			return j;
 		}
 		subtotal = next;
 	}
-	if(debug) Debug.Log(-1);
-	return 0;
+	
+	//we shouldn't get here. Talk to @AAorris.
+	return -1;
 }
 
 function Update () {
 	
 }
-
-
-/*
-
-openings = Array();
-    var firstOpening = seed.GetComponent(RoomOpenings).openings[0];
-    Debug.Log(firstOpening.transform.position);
-    Debug.Log(firstOpening.transform.rotation);
-    var child = children[Random.Range(0,children.Length)];
-	Instantiate(child, firstOpening.transform.position, firstOpening.transform.rotation);
-	
-	var newOpenings = child.GetComponent(RoomOpenings).openings.Length;
-	openings.Add(newOpenings);
-	Debug.Log(newOpenings);	
-
-*/
