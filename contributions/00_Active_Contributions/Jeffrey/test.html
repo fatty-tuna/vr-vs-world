@@ -13,9 +13,9 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 	var c = document.getElementById("myCanvas");
 	var context = c.getContext("2d");
 	
-	var maze = new MazeGenerator(100);
+	var maze = new MazeGenerator(60);
 
-	context.drawImage(maze.getHumanImage(), 0, 0);
+	context.drawImage(maze.getHumanImage(5), 0, 0);
 	</script>
 
 </body>

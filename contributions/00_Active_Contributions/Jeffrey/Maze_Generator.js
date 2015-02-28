@@ -10,6 +10,7 @@ function MazeGenerator(size){
 	}
 	
 	this.generateMaze();
+	this.finalize();
 };
 
 //Spirals from the center clockwise to create the maze array
@@ -84,8 +85,8 @@ MazeGenerator.prototype.generateMaze = function(){
 			var up = curBlock < this.MazeSize ? emptyBlock : this.MazeBlocks[curBlock - this.MazeSize];
 			
 			//Gets the block to the right of the current block
-			var right = (curBlock + 1) % this.MazeSize == 0 ? emptyBlock : this.MazeBlocks[curBlock + 1];
-			
+			var right = (curBlock + 1) % this.MazeSize == 0 ? emptyBlock : (curBlock + 1 >= this.MazeBlocks.length ? emptyBlock : this.MazeBlocks[curBlock + 1]);
+			console.log(curBlock);
 			//Gets the block below the current block
 			var down = curBlock / this.MazeSize <= (this.MazeSize - 1)? emptyBlock : this.MazeBlocks[curBlock + this.MazeSize];
 			
@@ -111,18 +112,43 @@ MazeGenerator.prototype.generateMaze = function(){
 	return true;
 };
 
+MazeGenerator.prototype.finalize = function(){
+	//Sets a maze block of all walls (for maze edges)
+	var emptyBlock = new MazeBlock();
+	emptyBlock.setSides(1,1,1,1);
+	
+	for(i = 0; i < this.MazeSize.length; i++){
+	
+		//Gets the block above the current block
+		var up = curBlock < this.MazeSize ? emptyBlock : this.MazeBlocks[curBlock - this.MazeSize];
+		
+		//Gets the block to the right of the current block
+		var right = (curBlock + 1) % this.MazeSize == 0 ? emptyBlock : (curBlock + 1 >= this.MazeBlocks.length ? emptyBlock : this.MazeBlocks[curBlock + 1]);
+		console.log(curBlock);
+		//Gets the block below the current block
+		var down = curBlock / this.MazeSize <= (this.MazeSize - 1)? emptyBlock : this.MazeBlocks[curBlock + this.MazeSize];
+		
+		//Gets the block to the left of the current block
+		var left = curBlock % this.MazeSize == 0 ? emptyBlock : this.MazeBlocks[curBlock - 1];
+		
+		//Finalize the current block
+		if(curBlock < this.MazeBlocks.length){
+			//this.MazeBlocks[curBlock].finalize(up,right,down,left);
+		}
+	}
+}
 MazeGenerator.prototype.getImage = function(){
 	var buffer = document.createElement("canvas");
-	buffer.width = this.MazeBlocks * 3;
-	buffer.height = this.MazeBlocks * 3;
+	buffer.width = this.MazeBlocks * 5;
+	buffer.height = this.MazeBlocks * 5;
 	var bufferContext = buffer.getContext("2d");
 	
 };
 
-MazeGenerator.prototype.getHumanImage = function(){
+MazeGenerator.prototype.getHumanImage = function(size){
 	var buffer = document.createElement("canvas");
-	buffer.width = this.MazeSize * 3;
-	buffer.height = this.MazeSize * 3;
+	buffer.width = this.MazeSize * size;
+	buffer.height = this.MazeSize * size;
 	var bufferContext = buffer.getContext("2d");
 	
 	var left;
@@ -131,7 +157,7 @@ MazeGenerator.prototype.getHumanImage = function(){
 	for(i = 0; i < this.MazeBlocks.length; i++){
 		top = Math.floor(i / this.MazeSize);
 		left = i % this.MazeSize;
-		bufferContext.drawImage(this.MazeBlocks[i].getImage(),left * 3, top * 3);
+		bufferContext.drawImage(this.MazeBlocks[i].getImage(size),left * size, top * size);
 	}
 	
 	return buffer;

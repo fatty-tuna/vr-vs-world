@@ -4,7 +4,7 @@ function MazeBlock(){
 
 MazeBlock.prototype.createBlock = function(up,right,down,left){
 	
-	switch(up.sides["DOWN"]){
+	switch(up.sides["DOWN"] == 1){
 		case 1:
 			this.sides["UP"] = 1;
 			break;
@@ -13,16 +13,16 @@ MazeBlock.prototype.createBlock = function(up,right,down,left){
 			break;
 	}
 	
-	switch(up.sides["RIGHT"]){
+	switch(right.sides["LEFT"] == 1){
 		case 1:
-			this.sides["LEFT"] = 1;
+			this.sides["RIGHT"] = 1;
 			break;
 		default:
-			this.sides["LEFT"] = Math.floor((Math.random() * 2));
+			this.sides["RIGHT"] = Math.floor((Math.random() * 2));
 			break;
 	}
 	
-	switch(up.sides["UP"]){
+	switch(down.sides["UP"] == 1){
 		case 1:
 			this.sides["DOWN"] = 1;
 			break;
@@ -31,14 +31,27 @@ MazeBlock.prototype.createBlock = function(up,right,down,left){
 			break;
 	}
 	
-	switch(up.sides["LEFT"]){
+	switch(left.sides["RIGHT"] == 1){
 		case 1:
-			this.sides["RIGHT"] = 1;
+			this.sides["LEFT"] = 1;
 			break;
 		default:
-			this.sides["RIGHT"] = Math.floor((Math.random() * 2));
+			this.sides["LEFT"] = Math.floor((Math.random() * 2));
 			break;
 	}
+	
+	
+	/*this.sides["UP"] = up.sides["DOWN"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
+	this.sides["RIGHT"] = right.sides["LEFT"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
+	this.sides["DOWN"] = down.sides["UP"] == 1 ? 1 : (Math.floor((Math.random() * 2)));
+	this.sides["LEFT"] = left.sides["RIGHT"] == 1 ? 1 : (Math.floor((Math.random() * 2)));*/
+};
+
+MazeBlock.prototype.finalize = function(up,right,down,left){
+	this.sides["UP"] = up.sides["DOWN"] != 0 ? 1 : this.sides["UP"];
+	this.sides["RIGHT"] = right.sides["LEFT"] != 0 ? 1 : this.sides["RIGHT"];
+	this.sides["DOWN"] = down.sides["UP"] != 0 ? 1 : this.sides["DOWN"];
+	this.sides["LEFT"] = left.sides["RIGHT"] != 0 ? 1 : this.sides["LEFT"];
 };
 
 MazeBlock.prototype.setSides = function(up,right,down,left){
@@ -58,30 +71,35 @@ MazeBlock.prototype.getColour = function(){
 	return rgb(value,value,value);
 };
 
-MazeBlock.prototype.getImage = function(){
+MazeBlock.prototype.getImage = function(size){
 	var buffer = document.createElement("canvas");
-	buffer.width = 3;
-	buffer.height = 3;
+	buffer.width = size;
+	buffer.height = size;
 	var bufferContext = buffer.getContext("2d");
 	bufferContext.fillStyle="#ffffff";
 	bufferContext.fillRect(0,0,buffer.width,buffer.height); 
 	
 	bufferContext.fillStyle="#000000";
 	
-	if(this.sides["UP"] == 1){
-		bufferContext.fillRect(0,0,2,0); 
-	}
-	
-	if(this.sides["RIGHT"] == 1){
-		bufferContext.fillRect(2,0,2,2); 
-	}
-	
-	if(this.sides["DOWN"] == 1){
-		bufferContext.fillRect(0,2,2,2); 
-	}
-	
-	if(this.sides["LEFT"] == 1){
-		bufferContext.fillRect(0,0,0,2); 
+	if(this.sides["UP"] != 0 && this.sides["RIGHT"] != 0 && this.sides["DOWN"] != 0 && this.sides["LEFT"] != 0){
+		bufferContext.fillRect(0,0,buffer.width,buffer.height); 
+	}else{
+		
+		if(this.sides["UP"] == 1){
+			bufferContext.fillRect(0,0,size - 1,0); 
+		}
+		
+		if(this.sides["RIGHT"] == 1){
+			bufferContext.fillRect(size - 1,0,size - 1,size - 1); 
+		}
+		
+		if(this.sides["DOWN"] == 1){
+			bufferContext.fillRect(0,size - 1,size - 1,size - 1); 
+		}
+		
+		if(this.sides["LEFT"] == 1){
+			bufferContext.fillRect(0,0,0,size - 1); 
+		}
 	}
 	
 	return buffer;
