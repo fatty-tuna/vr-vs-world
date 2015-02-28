@@ -3,31 +3,10 @@ function MazeBlock(){
 }
 
 MazeBlock.prototype.createBlock = function(up,right,down,left){
-
-	if(up.sides["DOWN"] == 1){
-		this.sides["UP"] = 1;
-	}else{
-		this.sides["UP"] = Math.floor((Math.random() * 2));
-	}
-	
-	if(right.sides["LEFT"] == 1){
-		this.sides["RIGHT"] = 1;
-	}else{
-		this.sides["RIGHT"] = Math.floor((Math.random() * 2));
-	}
-	
-	if(down.sides["UP"] == 1){
-		this.sides["DOWN"] = 1;
-	}else{
-		this.sides["DOWN"] = Math.floor((Math.random() * 2));
-	}
-	
-	if(left.sides["RIGHT"] == 1){
-		this.sides["LEFT"] = 1;
-	}else{
-		this.sides["LEFT"] = Math.floor((Math.random() * 2));
-	}
-
+	this.sides["UP"] = Math.floor((Math.random() * 2));
+	this.sides["RIGHT"] = Math.floor((Math.random() * 2));
+	this.sides["DOWN"] = Math.floor((Math.random() * 2));
+	this.sides["LEFT"] = Math.floor((Math.random() * 2));
 };
 
 MazeBlock.prototype.finalize = function(up,right,down,left){
