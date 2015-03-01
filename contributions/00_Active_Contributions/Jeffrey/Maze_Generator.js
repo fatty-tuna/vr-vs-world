@@ -133,89 +133,106 @@ MazeGenerator.prototype.mergeRooms = function(){
 	var endPoints = new Array();
 	var intersections = new Array();
 	
-	var test=0;
+	var blockCheck=1;
+	var exit = false;
 	do{
-		console.log(curBlockIndex);
-		
-		//Gets the number of walls
+		//Gets the current block
 		var curBlock;
 		curBlock = this.MazeBlocks[curBlockIndex];
-		
 		
 		//Gets surrounding blocks
 		var surroundingBlocks = this.getSurroundingBlocks(curBlockIndex);
 		
+		//Starting block has been filled
+		if(curBlock.filled == true){
+			if(surroundingBlocks["UP"].filled == false){
+				curBlockIndex -= this.MazeSize;
+				continue;
+			}
+			
+			if(surroundingBlocks["RIGHT"].filled == false){
+				curBlockIndex += 1;
+				continue;
+			}
+			
+			if(surroundingBlocks["DOWN"].filled == false){
+				curBlockIndex += this.MazeSize;
+				continue;
+			}
+			
+			if(surroundingBlocks["LEFT"].filled == false){
+				curBlockIndex -= 1;
+				continue;
+			}
+			
+			return false;
+		}
+		
+		//Checks for available paths
 		var numWalls = 0;
 		numWalls += curBlock.sides["UP"] || surroundingBlocks["UP"].marked;
 		numWalls += curBlock.sides["RIGHT"] || surroundingBlocks["RIGHT"].marked;
 		numWalls += curBlock.sides["DOWN"] || surroundingBlocks["DOWN"].marked;
 		numWalls += curBlock.sides["LEFT"] || surroundingBlocks["LEFT"].marked;
-		
-		//Checks for end point
-		if((numWalls == 4 || (test == 0 && numWalls == 3))  && curBlock.marked == false){
-			endPoints.push(curBlockIndex);
-			curBlock.endPoint = true;
+			
+		//Checks if the block has been visited
+		if(curBlock.marked == false){
+
+			//Checks for end point
+			if(numWalls >= 3){
+				if((blockCheck != 1 && numWalls == 4) || blockCheck == 1){
+					endPoints.push(curBlockIndex);
+					curBlock.endPoint = true;
+				}
+			}else{
+				intersections.push(curBlockIndex);
+				curBlock.intersection = true;
+			}
+			
+		}else{
+			if(numWalls < 4){
+				intersections.push(curBlockIndex);
+			}
 		}
-		
-		//Checks for intersection
-		if(numWalls < 3){
-			intersections.push(curBlockIndex);
-			curBlock.intersection = true;
-		}
-		
-		
-		
-		
 		
 		if(curBlock.sides["UP"] != 1 && surroundingBlocks["UP"].marked == false){
 			curBlockIndex -= this.MazeSize;
 			curBlock.marked = true;
+			blockCheck++;
 			continue;
 		}
 		
 		if(curBlock.sides["RIGHT"] != 1 && surroundingBlocks["RIGHT"].marked == false){
 			curBlockIndex += 1;
 			curBlock.marked = true;
+			blockCheck++;
 			continue;
 		}
 		
 		if(curBlock.sides["DOWN"] != 1 && surroundingBlocks["DOWN"].marked == false){
 			curBlockIndex += this.MazeSize;
 			curBlock.marked = true;
+			blockCheck++;
 			continue;
 		}
 		
 		if(curBlock.sides["LEFT"] != 1 && surroundingBlocks["LEFT"].marked == false){
 			curBlockIndex -= 1;
 			curBlock.marked = true;
+			blockCheck++;
 			continue;
 		}
 		
-
-		//set as endpoint
-		//curBlock.endPoint = true;
-		
 		if(intersections.length > 0){
-			var iEnd = intersections.length - 1;
-			var validInter = -1;
-			for(i = iEnd; i >= 0; i--){
-				surrInter = this.getSurroundingBlocks(intersections[i]);
-				if(surrInter["RIGHT"].marked != true || surrInter["DOWN"].marked != true || surrInter["LEFT"].marked != true){
-					validInter = intersections[i];
-					i = -1;
-				}else{
-					intersections.splice(intersections.length - 1, 1);
-				}
-			}
-			if(validInter > 0){
-				curBlockIndex = validInter;
-			}else{
-				
-			}
+			curBlockIndex = intersections[intersections.length - 1];
+			intersections.splice(intersections.length - 1, 1);
+			curBlock.marked = true;
+			blockCheck++;
+			continue;
 		}
-		curBlock.marked = true;
-		test++;
-	}while(test<100);
+		
+		exit = true;
+	}while(blockCheck<100 && exit == false);
 	//curBlock.intersection = true;
 }
 
