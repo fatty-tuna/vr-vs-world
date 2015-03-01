@@ -1,0 +1,3 @@
+[submodule "projects/map-builder"]
+	path = projects/map-builder
+	url = https://github.com/fatty-tuna/map-builder.git
