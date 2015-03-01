@@ -282,7 +282,7 @@ MazeGenerator.prototype.mergeRooms = function(){
 	}while(exit == false);
 	
 	//Returns if there are enough blocks or not
-	return (blockCheck > this.MazeSize / 5);
+	return (blockCheck > this.MazeSize / 3);
 }
 
 MazeGenerator.prototype.removeUnmarked = function(){
