@@ -11,9 +11,12 @@ function MazeGenerator(size){
 	}
 	console.log("Block Count: " + this.MazeBlocks.length);
 	
-	this.generateMaze();
-	this.finalize();
-	this.mergeRooms();
+	do{
+		this.generateMaze();
+		this.fixWalls();
+	}while(this.mergeRooms() == false);
+	this.removeUnmarked();
+	
 };
 
 //Spirals from the center clockwise to create the maze array
@@ -43,11 +46,7 @@ MazeGenerator.prototype.generateMaze = function(){
 	//Current maze block
 	var curBlock = center * this.MazeSize + center;
 	console.log("Starting Block: " + curBlock);
-	
-	//Sets a maze block of all walls (for maze edges)
-	var emptyBlock = new MazeBlock();
-	emptyBlock.setSides(1,1,1,1);
-	
+
 	//Loops through spiral until all blocks have been calculated
 	while(edgeCount < edgeTotal){
 
@@ -106,7 +105,7 @@ MazeGenerator.prototype.generateMaze = function(){
 	return true;
 };
 
-MazeGenerator.prototype.finalize = function(){
+MazeGenerator.prototype.fixWalls = function(){
 	
 	//Loops through the maze block array
 	for(i = 0; i < this.MazeBlocks.length; i++){
@@ -116,10 +115,11 @@ MazeGenerator.prototype.finalize = function(){
 		
 		//Finalize the current block
 		if(i < this.MazeBlocks.length){
-			this.MazeBlocks[i].finalize(surroundingBlocks);
+			this.MazeBlocks[i].fixWalls(surroundingBlocks);
 		}
 		
 	}
+	
 }
 
 MazeGenerator.prototype.mergeRooms = function(){
@@ -137,34 +137,34 @@ MazeGenerator.prototype.mergeRooms = function(){
 	var exit = false;
 	do{
 		//Gets the current block
-		var curBlock;
-		curBlock = this.MazeBlocks[curBlockIndex];
+		var curBlock = this.MazeBlocks[curBlockIndex];
 		
 		//Gets surrounding blocks
 		var surroundingBlocks = this.getSurroundingBlocks(curBlockIndex);
 		
 		//Starting block has been filled
-		if(curBlock.filled == true){
-			if(surroundingBlocks["UP"].filled == false){
+		if(curBlock.full == true){
+			if(surroundingBlocks["UP"].full == false){
 				curBlockIndex -= this.MazeSize;
 				continue;
 			}
 			
-			if(surroundingBlocks["RIGHT"].filled == false){
+			if(surroundingBlocks["RIGHT"].full == false){
 				curBlockIndex += 1;
 				continue;
 			}
 			
-			if(surroundingBlocks["DOWN"].filled == false){
+			if(surroundingBlocks["DOWN"].full == false){
 				curBlockIndex += this.MazeSize;
 				continue;
 			}
 			
-			if(surroundingBlocks["LEFT"].filled == false){
+			if(surroundingBlocks["LEFT"].full == false){
 				curBlockIndex -= 1;
 				continue;
 			}
 			
+			console.log("Map Gen Failed");
 			return false;
 		}
 		
@@ -223,6 +223,7 @@ MazeGenerator.prototype.mergeRooms = function(){
 			continue;
 		}
 		
+		//Jump to last intersection
 		if(intersections.length > 0){
 			curBlockIndex = intersections[intersections.length - 1];
 			intersections.splice(intersections.length - 1, 1);
@@ -231,15 +232,77 @@ MazeGenerator.prototype.mergeRooms = function(){
 			continue;
 		}
 		
+		//Jump to last end point
+		if(endPoints.length > 0){
+			curBlockIndex = endPoints[endPoints.length - 1];
+			curBlock.marked = true;
+			curBlock = this.MazeBlocks[curBlockIndex];
+			surroundingBlocks = this.getSurroundingBlocks(curBlockIndex);
+			
+			if(surroundingBlocks["UP"].marked == false && surroundingBlocks["UP"].full == false){
+				curBlock.sides["UP"] = 0;
+				this.MazeBlocks[curBlockIndex - this.MazeSize].sides["DOWN"] = 0;
+				curBlockIndex -= this.MazeSize;
+				curBlock.marked = true;
+				blockCheck++;
+				continue;
+			}
+			
+			if(surroundingBlocks["RIGHT"].marked == false && surroundingBlocks["RIGHT"].full == false){
+				curBlock.sides["RIGHT"] = 0;
+				this.MazeBlocks[curBlockIndex + 1].sides["LEFT"] = 0;
+				curBlockIndex += 1;
+				curBlock.marked = true;
+				blockCheck++;
+				continue;
+			}
+			
+			if(surroundingBlocks["DOWN"].marked == false && surroundingBlocks["DOWN"].full == false){
+				curBlock.sides["DOWN"] = 0;
+				this.MazeBlocks[curBlockIndex + this.MazeSize].sides["UP"] = 0;
+				curBlockIndex += this.MazeSize;
+				curBlock.marked = true;
+				blockCheck++;
+				continue;
+			}
+			
+			if(surroundingBlocks["LEFT"].marked == false && surroundingBlocks["LEFT"].full == false){
+				curBlock.sides["LEFT"] = 0;
+				this.MazeBlocks[curBlockIndex - 1].sides["RIGHT"] = 0;
+				curBlockIndex -= 1;
+				curBlock.marked = true;
+				blockCheck++;
+				continue;
+			}
+			
+			endPoints.splice(endPoints.length - 1, 1);
+			continue;
+		}
 		exit = true;
-	}while(blockCheck<100 && exit == false);
-	//curBlock.intersection = true;
+	}while(exit == false);
+	
+	//Returns if there are enough blocks or not
+	return (blockCheck > this.MazeSize / 5);
+}
+
+MazeGenerator.prototype.removeUnmarked = function(){
+
+	//Loops through the maze block array
+	for(i = 0; i < this.MazeBlocks.length; i++){
+		
+		//Finalize the current block
+		if(i < this.MazeBlocks.length && this.MazeBlocks[i].marked == false){
+			this.MazeBlocks[i].fillBlock();
+		}
+		
+	}
+
 }
 
 MazeGenerator.prototype.getSurroundingBlocks = function(index){
 	//Sets a maze block of all walls (for maze edges)
 	var emptyBlock = new MazeBlock();
-	emptyBlock.setSides(1,1,1,1);
+	emptyBlock.fillBlock();
 	
 	//Prepares variables
 	var up, right, down, left;

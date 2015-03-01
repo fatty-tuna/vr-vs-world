@@ -13,7 +13,7 @@ MazeBlock.prototype.createBlock = function(){
 	this.sides["LEFT"] = Math.floor((Math.random() * 2));
 };
 
-MazeBlock.prototype.finalize = function(sur){
+MazeBlock.prototype.fixWalls = function(sur){
 	if(sur["UP"].sides["DOWN"] != 0){
 		this.sides["UP"] = 1;
 	}
@@ -30,6 +30,14 @@ MazeBlock.prototype.finalize = function(sur){
 	if(this.sides["UP"] != 0 && this.sides["RIGHT"] != 0 && this.sides["DOWN"] != 0 && this.sides["LEFT"] != 0){
 		this.full = true;
 	}
+};
+
+MazeBlock.prototype.fillBlock = function(sur){
+	this.sides["UP"] = 1;
+	this.sides["RIGHT"] = 1;
+	this.sides["DOWN"] = 1;
+	this.sides["LEFT"] = 1;
+	this.full = true;
 };
 
 MazeBlock.prototype.setSides = function(up,right,down,left){
