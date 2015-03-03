@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="Maze_Generator.js"></script>
 </head>
 <body>
-<canvas id="myCanvas" width="970" height="970" style="border:1px solid #000000;">
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 	<script>
@@ -13,9 +13,10 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 	var c = document.getElementById("myCanvas");
 	var context = c.getContext("2d");
 	
-	var maze = new MazeGenerator(97);
+	var maze = new MazeGenerator(500);
 
-	context.drawImage(maze.getHumanImage(10), 0, 0);
+	//context.drawImage(maze.getHumanImage(10), 0, 0);
+	context.drawImage(maze.getImage(), 0, 0);
 	</script>
 
 </body>

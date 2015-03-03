@@ -5,16 +5,18 @@ function MazeGenerator(size){
 	console.log("Maze Size: " + this.MazeSize);
 	
 	//Prepares the maze storage
-	this.MazeBlocks = new Array();
-	for(i = 0; i < (this.MazeSize * this.MazeSize); i++){
-		this.MazeBlocks.push(new MazeBlock());
-	}
-	console.log("Block Count: " + this.MazeBlocks.length);
-	
+	this.MazeBlocks;
 	do{
+		//Initialize maze blocks
+		this.MazeBlocks = new Array();
+		for(i = 0; i < (this.MazeSize * this.MazeSize); i++){
+			this.MazeBlocks.push(new MazeBlock());
+		}
+		console.log("Block Count: " + this.MazeBlocks.length);
+		
 		this.generateMaze();
 		this.fixWalls();
-	}while(this.mergeRooms() == false);
+	}while(this.mergeSegments() == false);
 	this.removeUnmarked();
 	
 };
@@ -122,7 +124,7 @@ MazeGenerator.prototype.fixWalls = function(){
 	
 }
 
-MazeGenerator.prototype.mergeRooms = function(){
+MazeGenerator.prototype.mergeSegments = function(){
 	//Center of the maze
 	var center = Math.floor((this.MazeSize / 2));
 	
@@ -282,7 +284,7 @@ MazeGenerator.prototype.mergeRooms = function(){
 	}while(exit == false);
 	
 	//Returns if there are enough blocks or not
-	return (blockCheck > this.MazeSize / 3);
+	return (blockCheck > this.MazeBlocks.length / 3);
 }
 
 MazeGenerator.prototype.removeUnmarked = function(){
@@ -296,6 +298,10 @@ MazeGenerator.prototype.removeUnmarked = function(){
 		}
 		
 	}
+
+}
+
+MazeGenerator.prototype.createRooms = function(){
 
 }
 
@@ -340,10 +346,18 @@ MazeGenerator.prototype.getSurroundingBlocks = function(index){
 
 MazeGenerator.prototype.getImage = function(){
 	var buffer = document.createElement("canvas");
-	buffer.width = this.MazeBlocks * 5;
-	buffer.height = this.MazeBlocks * 5;
+	buffer.width = this.MazeSize;
+	buffer.height = this.MazeSize;
 	var bufferContext = buffer.getContext("2d");
 	
+	var left;
+	var top;
+	for(i = 0; i < this.MazeBlocks.length; i++){
+		top = Math.floor(i / this.MazeSize);
+		left = i % this.MazeSize;
+		bufferContext.drawImage(this.MazeBlocks[i].getImage(),left, top);
+	}
+	return buffer;
 };
 
 MazeGenerator.prototype.getHumanImage = function(size){
@@ -358,7 +372,7 @@ MazeGenerator.prototype.getHumanImage = function(size){
 	for(i = 0; i < this.MazeBlocks.length; i++){
 		top = Math.floor(i / this.MazeSize);
 		left = i % this.MazeSize;
-		bufferContext.drawImage(this.MazeBlocks[i].getImage(size),left * size, top * size);
+		bufferContext.drawImage(this.MazeBlocks[i].getHumanImage(size),left * size, top * size);
 	}
 	
 	return buffer;

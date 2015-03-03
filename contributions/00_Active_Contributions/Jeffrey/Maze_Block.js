@@ -73,20 +73,47 @@ MazeBlock.prototype.setSides = function(up,right,down,left){
 };
 
 MazeBlock.prototype.getValue = function(){
-	var value = this.sides["UP"];
-	value += this.sides["RIGHT"] * 2;
-	value += this.sides["DOWN"] * 4;
-	value += this.sides["LEFT"] * 8;
+	var value = this.sides["UP"] * 16;
+	value += this.sides["RIGHT"] * 32;
+	value += this.sides["DOWN"] * 64;
+	value += this.sides["LEFT"] * 128;
 	return value
 };
 
 MazeBlock.prototype.getColour = function(){
-	var value = this.getValue;
-	return rgb(value,value,value);
+	return "rgba(" + (this.sides["UP"] * 255) + ", " + (this.sides["RIGHT"] * 255) + ", " + (this.sides["DOWN"] * 255) + ", " + (this.sides["LEFT"]) + ")";
 };
 
-MazeBlock.prototype.getImage = function(size){
+MazeBlock.prototype.getImage = function(colour){
 
+	if (colour === undefined) colour = false;
+	
+	//Creates a new canvas
+	var buffer = document.createElement("canvas");
+	
+	//Sets the canvas Dimensions
+	buffer.width = 1;
+	buffer.height = 1;
+	
+	//Gets the canvas context
+	var bufferContext = buffer.getContext("2d");
+	
+	//Sets the main maze colour
+	bufferContext.fillStyle = this.getColour();
+	
+	//Fills the background
+	bufferContext.fillRect(0,0,buffer.width,buffer.height); 
+	
+	//Returns the image
+	return buffer;
+	
+};
+
+
+MazeBlock.prototype.getHumanImage = function(size, colour){
+
+	if (colour === undefined) colour = false;
+	
 	//Creates a new canvas
 	var buffer = document.createElement("canvas");
 	
@@ -102,17 +129,17 @@ MazeBlock.prototype.getImage = function(size){
 	
 	//Sets the colour if it has been marked by the room merger
 	if(this.marked == true){
-		bufferContext.fillStyle="#aaffaa";
+		if(colour) bufferContext.fillStyle="#aaffaa";
 	}
 	
 	//Sets the colour if it has been marked as an intersection
 	if(this.intersection == true){
-		bufferContext.fillStyle="#aaaaff";
+		if(colour) bufferContext.fillStyle="#aaaaff";
 	}
 	
 	//Sets the colour if it has been marked as an end point
 	if(this.endPoint == true){
-		bufferContext.fillStyle="#ffaaaa";
+		if(colour) bufferContext.fillStyle="#ffaaaa";
 	}
 	
 	//Fills the background
@@ -154,4 +181,3 @@ MazeBlock.prototype.getImage = function(size){
 	return buffer;
 	
 };
-
