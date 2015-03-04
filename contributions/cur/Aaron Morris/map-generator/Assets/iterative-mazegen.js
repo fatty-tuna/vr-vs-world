@@ -3,26 +3,53 @@
 var seed : GameObject;
 var children : GameObject[];
 var probabilities : float[];
+var maxObjects : int;
+var objects : int;
+var _boundingBoxes : Array;
 
+var newPoints : Array();
 //var openings : Array; 
 
 var debug : int = 1;
 
 function Start () {
+	maxObjects = 100;
+	objects = 0;
+	_boundingBoxes = new Array();
 	Fill(seed);
 	Fill(PutRoom(seed.GetComponent(RoomOpenings).entrance));
 }
 
 function Fill(room:GameObject) {
+	if(room==null) return;
 	var view : RoomOpenings = room.GetComponent(RoomOpenings);
-	for(var i=0; i<view.openings.Length; i++) {
+	for(var i=0; i<view.openings.length; i++) {
 		Fill(PutRoom(view.openings[i]));
 	}
 }
 
 function PutRoom(locator:GameObject) {
-	var type = children[ChooseRoom()];
-	var newRoom = Instantiate(type, locator.transform.position, locator.transform.rotation);
+	if(objects >= maxObjects) return;
+	objects += 1;
+	Debug.Log("Object "+objects);
+	for(var i=0; i<children.Length; i++) {
+		var type = children[ChooseRoom()];
+		var newRoom = Instantiate(type, locator.transform.position, locator.transform.rotation);
+		var newBB = newRoom.GetComponent(RoomOpenings).boundingbox.collider.bounds;
+		var found : boolean = false;
+		for(var j=0; j<_boundingBoxes.length; j++) {
+			if(newBB.Intersects(_boundingBoxes[j])) {
+				Destroy(newRoom);
+				break;
+				//we're going to go again
+			} else {
+				found = true;
+				_boundingBoxes.Add(newBB);
+				break;
+			}
+		}
+		if(found) break;
+	}
 	return newRoom;
 }
 
@@ -47,6 +74,7 @@ function ChooseRoom() {
 		
 		if(pointer > subtotal && pointer < next) {
 			if(debug) Debug.Log(j);
+			//probabilities[j]*=0.95;
 			return j;
 		}
 		subtotal = next;
