@@ -9,11 +9,11 @@ Head, Torso, Arms, Legs, Appropriate Materials
 
 # Maze Assets
 ## Priority 1
-- [x] Model - Lighting - Torch - jb
+- [x] Model - Lighting - Torch
 - [x] Model - Movement - Wooden Door
-- [x] Model - Obstacle - Suit of Armour - jb
+- [x] Model - Obstacle - Suit of Armour 
 - [x] Model - Obstacle - Barrel
-- [x] Model - Obstacle - Chest - jb
+- [x] Model - Obstacle - Chest 
 - [x] Model - Obstacle - Table
 - [x] Model - Room Gen - Pillar
 - [x] Model - Room Gen - Buttress
@@ -25,7 +25,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 
 ## Priority 2
 - [x] Model - Lighting - Lanturn
-- [ ] Model - Movement - Iron Door
+- [x] Model - Movement - Iron Door 
 - [x] Model - Obstacle - Book Case
 - [ ] Image - Room Gen - Rug
 - [ ] Image - Room Gen - Spiderweb
