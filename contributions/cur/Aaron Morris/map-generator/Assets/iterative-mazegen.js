@@ -4,27 +4,40 @@ var seed : GameObject;
 var children : GameObject[];
 var probabilities : float[];
 var maxObjects : int;
+var maxDepth : int;
 var objects : int;
 var _boundingBoxes : Array;
 
-var newPoints : Array();
+var newPoints : Array;
 //var openings : Array; 
 
 var debug : int = 1;
 
 function Start () {
 	maxObjects = 100;
+	maxDepth = 20;
 	objects = 0;
 	_boundingBoxes = new Array();
-	Fill(seed);
-	Fill(PutRoom(seed.GetComponent(RoomOpenings).entrance));
+	newPoints = new Array();
+
+	var openings = seed.GetComponent(RoomOpenings).openings;
+	for(var i=0; i<openings.length; i++) {
+		newPoints.Add(openings[i]);
+	}
+	newPoints.Add(seed.GetComponent(RoomOpenings).entrance);
+	for(i=0; i < maxDepth; i++) {
+		for(var opening=0; opening<newPoints.length; opening++) {
+			Fill(newPoints[opening]);
+		}
+	}
 }
 
 function Fill(room:GameObject) {
 	if(room==null) return;
 	var view : RoomOpenings = room.GetComponent(RoomOpenings);
 	for(var i=0; i<view.openings.length; i++) {
-		Fill(PutRoom(view.openings[i]));
+		var newRoom = PutRoom(view.openings[i]);
+		newPoints.Add(newRoom.GetComponent(RoomOpenings));
 	}
 }
 
