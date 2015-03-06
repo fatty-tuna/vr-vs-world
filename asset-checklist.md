@@ -18,7 +18,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Room Gen - Pillar
 - [x] Model - Room Gen - Buttress
 - [ ] Image - Material - Rusted Metal
-- [ ] Image - Material - Wood
+- [x] Image - Material - Wood
 - [ ] Image - Material - Stone Wall
 - [ ] Image - Material - Stone Floor
 - [ ] Image - Material - Bone
