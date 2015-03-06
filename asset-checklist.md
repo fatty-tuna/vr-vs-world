@@ -12,7 +12,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Lighting - Torch - jb
 - [ ] Model - Movement - Wooden Door
 - [x] Model - Obstacle - Suit of Armour - jb
-- [ ] Model - Obstacle - Barrel
+- [x] Model - Obstacle - Barrel
 - [ ] Model - Obstacle - Chest
 - [ ] Model - Obstacle - Table
 - [ ] Model - Room Gen - Pillar
