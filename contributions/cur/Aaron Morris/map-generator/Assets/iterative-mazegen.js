@@ -45,7 +45,8 @@ function PutRoom(locator:GameObject) {
 	if(objects >= maxObjects) return;
 	objects += 1;
 	Debug.Log("Object "+objects);
-	for(var i=0; i<children.Length; i++) {
+	var choosing : boolean = true;
+	while(choosing) {
 		var type = children[ChooseRoom()];
 		var newRoom = Instantiate(type, locator.transform.position, locator.transform.rotation);
 		var newBB = newRoom.GetComponent(RoomOpenings).boundingbox.collider.bounds;
@@ -57,6 +58,7 @@ function PutRoom(locator:GameObject) {
 				//we're going to go again
 			} else {
 				found = true;
+				choosing = !found;
 				_boundingBoxes.Add(newBB);
 				break;
 			}
