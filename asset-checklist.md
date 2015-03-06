@@ -20,7 +20,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Image - Material - Rusted Metal
 - [x] Image - Material - Wood
 - [x] Image - Material - Stone Wall
-- [ ] ~~Image - Material - Stone Floor~~ Jeffrey says no
+- [ ] ~~Image - Material - Stone Floor~~ No stone for you!
 - [x] Image - Material - Bone
 
 ## Priority 2
