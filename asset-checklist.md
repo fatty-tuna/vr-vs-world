@@ -15,7 +15,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Obstacle - Barrel
 - [x] Model - Obstacle - Chest - jb
 - [x] Model - Obstacle - Table
-- [ ] Model - Room Gen - Pillar
+- [x] Model - Room Gen - Pillar
 - [x] Model - Room Gen - Buttress
 - [ ] Image - Material - Rusted Metal
 - [ ] Image - Material - Wood
