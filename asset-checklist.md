@@ -17,11 +17,11 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Obstacle - Table
 - [x] Model - Room Gen - Pillar
 - [x] Model - Room Gen - Buttress
-- [ ] Image - Material - Rusted Metal
+- [x] Image - Material - Rusted Metal
 - [x] Image - Material - Wood
-- [ ] Image - Material - Stone Wall
+- [x] Image - Material - Stone Wall
 - [ ] Image - Material - Stone Floor
-- [ ] Image - Material - Bone
+- [x] Image - Material - Bone
 
 ## Priority 2
 - [x] Model - Lighting - Lanturn
