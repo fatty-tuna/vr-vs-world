@@ -24,7 +24,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [ ] Image - Material - Bone
 
 ## Priority 2
-- [ ] Model - Lighting - Lanturn
+- [x] Model - Lighting - Lanturn
 - [ ] Model - Movement - Iron Door
 - [x] Model - Obstacle - Book Case
 - [ ] Image - Room Gen - Rug
