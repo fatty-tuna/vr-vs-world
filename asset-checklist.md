@@ -13,7 +13,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Movement - Wooden Door
 - [x] Model - Obstacle - Suit of Armour - jb
 - [x] Model - Obstacle - Barrel
-- [ ] Model - Obstacle - Chest
+- [x] Model - Obstacle - Chest - jb
 - [x] Model - Obstacle - Table
 - [ ] Model - Room Gen - Pillar
 - [x] Model - Room Gen - Buttress
