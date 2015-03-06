@@ -26,7 +26,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 ## Priority 2
 - [ ] Model - Lighting - Lanturn
 - [ ] Model - Movement - Iron Door
-- [ ] Model - Obstacle - Book Case
+- [x] Model - Obstacle - Book Case
 - [ ] Image - Room Gen - Rug
 - [ ] Image - Room Gen - Spiderweb
 - [ ] Model - Room Gen - Iron Bars
