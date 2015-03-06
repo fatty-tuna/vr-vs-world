@@ -11,7 +11,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 ## Priority 1
 - [x] Model - Lighting - Torch - jb
 - [ ] Model - Movement - Wooden Door
-- [ ] Model - Obstacle - Suit of Armour
+- [x] Model - Obstacle - Suit of Armour - jb
 - [ ] Model - Obstacle - Barrel
 - [ ] Model - Obstacle - Chest
 - [ ] Model - Obstacle - Table
