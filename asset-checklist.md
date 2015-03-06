@@ -10,7 +10,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 # Maze Assets
 ## Priority 1
 - [x] Model - Lighting - Torch - jb
-- [ ] Model - Movement - Wooden Door
+- [x] Model - Movement - Wooden Door
 - [x] Model - Obstacle - Suit of Armour - jb
 - [x] Model - Obstacle - Barrel
 - [ ] Model - Obstacle - Chest
