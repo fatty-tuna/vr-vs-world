@@ -14,7 +14,7 @@ Head, Torso, Arms, Legs, Appropriate Materials
 - [x] Model - Obstacle - Suit of Armour - jb
 - [x] Model - Obstacle - Barrel
 - [ ] Model - Obstacle - Chest
-- [ ] Model - Obstacle - Table
+- [x] Model - Obstacle - Table
 - [ ] Model - Room Gen - Pillar
 - [ ] Model - Room Gen - Buttress
 - [ ] Image - Material - Rusted Metal
