@@ -69,6 +69,7 @@ public class IRCbot extends PircBot {
 
 				Robot r = new Robot();
 				mimicKeyPress(r, KeyEvent.VK_UP);
+				botGui.println(sender + " - UP");
 			}
 			catch (Exception e) {
 				botGui.println(e);
@@ -82,6 +83,7 @@ public class IRCbot extends PircBot {
 
 				Robot r = new Robot();
 				mimicKeyPress(r, KeyEvent.VK_DOWN);
+				botGui.println(sender + " - DOWN");
 			}
 			catch (Exception e) {
 				botGui.println(e);
@@ -95,6 +97,7 @@ public class IRCbot extends PircBot {
 
 				Robot r = new Robot();		
 				mimicKeyPress(r, KeyEvent.VK_LEFT);
+				botGui.println(sender + " - LEFT");
 			}
 			catch (Exception e) {
 				botGui.println(e);
@@ -108,6 +111,7 @@ public class IRCbot extends PircBot {
 				
 				Robot r = new Robot();
 				mimicKeyPress(r, KeyEvent.VK_RIGHT);
+				botGui.println(sender + " - RIGHT");
 			}
 			catch (Exception e) {
 				botGui.println(e);
