@@ -243,8 +243,5 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 *.asset
-*.cs
-*.wav
 *.shader
 beta/Beta/Assets/Standard Assets/Effects/ImageEffects/Textures/color correction ramp.png
-*.png
