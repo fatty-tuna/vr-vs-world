@@ -14,7 +14,7 @@ public class IRCbot extends PircBot {
 	private BotGUI botGui;
 	
 	public IRCbot (BotGUI gui) {
-		this.setName ("ds3FattyTunaBot");
+		this.setName ("ds3fattytuna");
 		botGui = gui;
 	}
 	

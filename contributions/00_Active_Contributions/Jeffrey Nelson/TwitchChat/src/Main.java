@@ -12,9 +12,10 @@ public class Main {
         try{
         	botGui.println( "Connecting to twitch...");
         	bot.connect("irc.twitch.tv", 6667, "oauth:uolwms2n3i4cm1zlwbwr6wdyfo7epa");
-        	
+        	botGui.println( "Connected");
         	// Join the #pircbot channel.
             bot.joinChannel("#ds3fattytuna");
+            botGui.println("Joined channel");
             
         }catch(Exception e){
         	botGui.println(e);

@@ -33,14 +33,14 @@ public class BotGUI extends JFrame{
 		
 	}
 	public void println(String message){
-		messageArea.append(message + "\n");
+		messageArea.append( String.valueOf(new java.util.Date()) + " - " + message + "\n");
 		if(!messageAreaVScroll.getValueIsAdjusting()){
 			messageArea.setCaretPosition(messageArea.getDocument().getLength());
 		}
 	}
 	
 	public void println(Object message){
-		messageArea.append(String.valueOf(message) + "\n");
+		messageArea.append( String.valueOf(new java.util.Date()) + " - " + String.valueOf(message) + "\n");
 		if(!messageAreaVScroll.getValueIsAdjusting()){
 			messageArea.setCaretPosition(messageArea.getDocument().getLength());
 		}
