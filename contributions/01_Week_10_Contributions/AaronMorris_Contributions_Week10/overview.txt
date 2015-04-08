@@ -1,0 +1,20 @@
+I worked a lot on the outer workings of the project this week.
+
+I helped Jeffrey work his maze generation into the system,
+
+and helped jessica bring her character into the game.
+I helped with monster generation by building a fully reusable system that allows
+the use of all unity animations, which is good leverage for the project.
+
+I created a fully codable, nav-mesh-ready, global-illumination ready room block for the maze generation,
+and I created an inspector panel with utility functions to complement Jeffrey's maze generation and let
+generation happen at compile time when the maze can be baked with all the useful data that we need.
+
+I created user interface elements that allow for pain to be displayed in combat, and published my working
+experience using the UI to our group so that it can be used for more purposes.
+
+I created a github repository to alleviate some of the trouble we have had lately, but it has not been
+transitioned into full use yet.
+
+The monsters are able to navigate through the generated mazes now, and the personality system is about 50%
+completed.
