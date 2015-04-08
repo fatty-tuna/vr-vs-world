@@ -14,11 +14,19 @@ public class Main {
         // Connect to the IRC server.
         try{
         	botGui.println( "Connecting to twitch...");
-        	bot.connect("irc.twitch.tv", 6667, "oauth:uolwms2n3i4cm1zlwbwr6wdyfo7epa");
-        	botGui.println( "Connected");
-        	// Join the #pircbot channel.
-            bot.joinChannel("#ds3fattytuna");
-            botGui.println("Joined channel");
+        	bot.connect("irc.twitch.tv", 6667, "oauth:2puv8zw29b6mxq6on20vhb82fc4duu");
+        	
+            
+            if (bot.isConnected()){
+            	botGui.println( "Connected");
+            	// Join the #pircbot channel.
+                bot.joinChannel("#ds3fattytuna");
+                botGui.println("Joined channel");
+
+            }else{
+            	botGui.println( "Login Failed");
+            	
+            }
             
         }catch(Exception e){
         	botGui.println(e);

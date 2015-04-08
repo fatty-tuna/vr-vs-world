@@ -85,7 +85,7 @@ public class FTPircBot extends PircBot{
 	
 	public void onMessage (String channel, String sender, String login, String host, String message) {
 		//IF UP IS A KEYWORD FROM CHAT
-		if (message.equalsIgnoreCase ("!up")) {
+		if (message.equalsIgnoreCase ("up")) {
 			try {
 				//sendMessage(channel, sender + ": You have hit UP");
 
@@ -99,7 +99,7 @@ public class FTPircBot extends PircBot{
 		}
 		
 		//IF DOWN IS A KEYWORD FROM CHAT
-		if (message.equalsIgnoreCase ("!down")) {
+		if (message.equalsIgnoreCase ("down")) {
 			try {
 				//sendMessage(channel, sender + ": You have hit DOWN");
 
@@ -113,7 +113,7 @@ public class FTPircBot extends PircBot{
 		}
 		
 		//IF LEFT IS A KEYWORD FROM CHAT
-		if (message.equalsIgnoreCase ("!left")) {
+		if (message.equalsIgnoreCase ("left")) {
 			try {
 				//sendMessage(channel, sender + ": You have hit LEFT");
 
@@ -127,7 +127,7 @@ public class FTPircBot extends PircBot{
 		}
 		
 		//IF RIGHT IS A KEYWORD FROM CHAT
-		if (message.equalsIgnoreCase ("!right")) {
+		if (message.equalsIgnoreCase ("right")) {
 			try {
 				//sendMessage(channel, sender + ": You have hit RIGHT");
 				
